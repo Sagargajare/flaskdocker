@@ -8,7 +8,9 @@ services:
     build: ./flask
     ports:
       - "8000:8000"
-    command: gunicorn -w 1 -b :8000 app:server
+    command:gunicorn --bind 0.0.0.0:8000 app:server
+    
+    
 
 
   nginx:
