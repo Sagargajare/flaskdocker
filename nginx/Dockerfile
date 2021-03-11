@@ -1,8 +1,9 @@
-# Use the Nginx image
-FROM nginx
+FROM nginx:1.15.8
 
-# Remove the default nginx.conf
+RUN rm /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/
+
 RUN rm /etc/nginx/conf.d/default.conf
+COPY project.conf /etc/nginx/conf.d/
 
-# Replace with our own nginx.conf
-COPY nginx.conf /etc/nginx/conf.d/
+COPY ./static ./static

@@ -1,3 +1,5 @@
-opencv-python
-flask
-uwsgi
+sudo apt update
+sudo apt install python3-opencv
+
+pip3 install flask
+

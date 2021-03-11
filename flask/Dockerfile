@@ -1,13 +1,9 @@
-FROM python:3.7.2-stretch
+FROM python:3.6.7
 
-# Set the working directory to /app
-WORKDIR /app
+RUN mkdir -p /home/project/dash_app
+WORKDIR /home/project/dash_app
+COPY requirements.txt /home/project/dash_app
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the current directory contents into the container at /app 
-ADD . /app
+COPY . /home/project/dash_app
 
-# Install the dependencies
-RUN pip install -r requirements.txt
-
-# run the command to start uWSGI
-CMD ["uwsgi", "app.ini"]
